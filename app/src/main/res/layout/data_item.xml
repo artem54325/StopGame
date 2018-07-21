@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="@dimen/data_item_row_height"
+    android:layout_width="match_parent">
+
+    <ru.stopgame.artem.stopgame.additional_layout.other.LevelBeamView
+        android:id="@+id/dataItemLevelBeam"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/data_item_row_height"
+        android:background="@android:color/transparent" />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:gravity="left|center_vertical"
+        android:layout_toLeftOf="@+id/dataItemArrow"
+        android:layout_toRightOf="@+id/dataItemLevelBeam"
+        android:layout_marginLeft="@dimen/offset_default"
+        android:layout_marginRight="@dimen/offset_default">
+        <TextView
+            android:id="@+id/dataItemName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textSize="@dimen/font_list_drawer" />
+
+        <!--<TextView
+            android:singleLine="true"
+            android:id="@+id/dataItemInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/font_small"
+            android:textColor="@android:color/black" />-->
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/dataItemArrow"
+        style="@style/Widget.AppCompat.DrawerArrowToggle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:src="@drawable/ic_expand_more" />
+
+</RelativeLayout>

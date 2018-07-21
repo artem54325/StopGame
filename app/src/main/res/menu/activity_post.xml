@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:yourapp="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/tools">
+
+    <item
+        android:id="@+id/action_refresh"
+        android:icon="@drawable/sinchronize_32"
+        android:title="@android:string/search_go"
+        yourapp:showAsAction="ifRoom" />
+
+
+
+    <item
+        android:id="@+id/action_printing"
+        android:title="Версия для печати"
+        yourapp:showAsAction="never"/>
+    <item
+        android:id="@+id/action_open"
+        android:title="Открыть"
+        yourapp:showAsAction="never"/>
+    <item
+        android:id="@+id/action_link"
+        android:title="Ссылка"
+        yourapp:showAsAction="never"/>
+    <item
+        android:id="@+id/action_settings"
+        android:title="Настройки"
+        yourapp:showAsAction="never"/>
+
+</menu>

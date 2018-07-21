@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="top"
+    android:background="#000000"
+    android:clickable="true"
+    android:foregroundGravity="top"
+    android:orientation="horizontal"
+    app:elevation="4dp">
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="top"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="10dp"
+        android:layout_weight="0.5"
+        android:foregroundGravity="top"
+        android:minHeight="200dp"
+        app:srcCompat="@mipmap/ic_launcher" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_weight="0.5"
+        android:foregroundGravity="center"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/gameName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="5dp"
+                android:text="Игра:"
+                android:textAppearance="@style/PtSansNarrowFont"
+                tools:ignore="RtlSymmetry" />
+
+            <TextView
+                android:id="@+id/gameTextName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:autoLink="web|all"
+                android:clickable="false"
+                android:text="TextView"
+                android:textColor="#AFAFAF"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/platformName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="5dp"
+                android:text="Платформа:"
+                android:textAppearance="@style/PtSansNarrowFont" />
+
+            <TextView
+                android:id="@+id/platformTextName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="TextView"
+                android:textColor="#AFAFAF"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/releaseDateName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="5dp"
+                android:text="Дата выхода:"
+                android:textAppearance="@style/PtSansNarrowFont"
+                tools:ignore="RtlSymmetry" />
+
+            <TextView
+                android:id="@+id/releaseTextDateName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="TextView"
+                android:textColor="#AFAFAF"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/developerName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="5dp"
+                android:text="Разработчик:"
+                android:textAppearance="@style/PtSansNarrowFont" />
+
+            <TextView
+                android:id="@+id/developeTextName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="TextView"
+                android:textColor="#AFAFAF"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/publisherName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="5dp"
+                android:text="Издатель"
+                android:textAppearance="@style/PtSansNarrowFont" />
+
+            <TextView
+                android:id="@+id/publisherTextName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="TextView"
+                android:textColor="#AFAFAF"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textOffical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="5dp"
+            android:text="TextView"
+            android:textColor="#AFAFAF"
+            android:textSize="12sp" />
+    </LinearLayout>
+</LinearLayout>

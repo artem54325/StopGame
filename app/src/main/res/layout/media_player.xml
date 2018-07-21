@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/black"
+    android:paddingRight="15dp">
+
+    <ImageButton
+        android:id="@+id/start_stop_butt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/shape_oval_normal"
+        android:backgroundTint="@color/red"
+        app:layout_constraintEnd_toStartOf="@+id/progress"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_media_play_dark" />
+
+    <TextView
+        android:id="@+id/name_composition"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="96dp"
+        android:layout_marginTop="8dp"
+        android:text="Название композиции"
+        android:textColor="@color/rippelColor"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/progress"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:layout_width="248dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="96dp"
+        android:progress="50"
+        android:progressTint="@android:color/background_light"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/name_composition" />
+
+    <TextView
+        android:id="@+id/time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="292dp"
+        android:text="0:00 / 8:35"
+        android:textColor="@android:color/background_light"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/progress"
+        app:layout_constraintVertical_bias="0.0" />
+</android.support.constraint.ConstraintLayout>
