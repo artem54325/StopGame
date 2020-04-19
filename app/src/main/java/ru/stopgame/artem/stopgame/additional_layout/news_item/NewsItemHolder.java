@@ -8,17 +8,16 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import ru.rambler.libs.swipe_layout.SwipeLayout;
 import ru.stopgame.artem.stopgame.models.NewsItem;
 import ru.stopgame.artem.stopgame.R;
-import ru.stopgame.artem.stopgame.repository.SettingRepository;
+import ru.stopgame.artem.stopgame.repository.SettingsRepository;
 import ru.stopgame.artem.stopgame.ui.view.PostShowAppActivity;
 import ru.stopgame.artem.stopgame.utility.DowlandImage;
 
+//({"checkstyle:CommentsIndentation", "checkstyle:Indentation", "checkstyle:WhitespaceAround"})
 public class NewsItemHolder extends RecyclerView.ViewHolder {//implements View.OnClickListener
 
     @BindView(R.id.image_post)
@@ -43,7 +42,7 @@ public class NewsItemHolder extends RecyclerView.ViewHolder {//implements View.O
     @BindView(R.id.rating_image)
     ImageView ratingImage;
 
-    private SettingRepository repository;
+    private SettingsRepository repository;
 
 //    @BindView(R.id.right_view)
 //    View rightView;
@@ -54,37 +53,39 @@ public class NewsItemHolder extends RecyclerView.ViewHolder {//implements View.O
 
 
 //    @BindView(R.id.text_name_post)
-//    TextView textName;
+//({"checkstyle:MemberName", "checkstyle:Indentation", "checkstyle:CommentsIndentation"})
+TextView TextName;
 
     @BindView(R.id.img_tag)
     TextView imgTag;
 
+    //({"checkstyle:Indentation", "checkstyle:CommentsIndentation", "checkstyle:MissingJavadocMethod"})
     public NewsItemHolder(View itemView) {
         super(itemView);
         ButterKnife.bind(this,itemView);
 
-        repository = new SettingRepository(itemView.getContext());
-
+        repository = new SettingsRepository(itemView.getContext());
 //        rightView.setClickable(true);
 //        rightView.setOnClickListener(this);
     }
 
+    //({"checkstyle:Indentation", "checkstyle:WhitespaceAround", "checkstyle:CommentsIndentation", "checkstyle:NeedBraces", "checkstyle:MissingJavadocMethod"})
     public void setView(final NewsItem object) {
-        if (object.getImg()==null&&object.getImgUrl()==null)
+        if (object.getImg() == null && object.getImgUrl() == null)
             imagePost.setVisibility(View.GONE);
-        else{
-            if (object.getImgUrl()!=null) {
+        else {
+            if (object.getImgUrl() != null) {
                 new DowlandImage(imagePost).execute(object.getImgUrl());
-            }else {
+            } else {
                 imagePost.setImageBitmap(object.getImg());
             }
         }
-        if (object.getText()!=null)
+        if (object.getText() != null)
             text.setText(object.getText());
         else
             text.setVisibility(View.GONE);
 
-        if (object.getTag()!=null){
+        if (object.getTag() != null){
             imgTag.setVisibility(View.VISIBLE);
             imgTag.setText(object.getTag());
             imgTag.setBackgroundColor(Color.parseColor(object.getColorTag()));
@@ -93,12 +94,13 @@ public class NewsItemHolder extends RecyclerView.ViewHolder {//implements View.O
         date.setText(object.getDate());
         namePost.setText(object.getNamePost());
         comm.setText(object.getKomments());
+
 //        textName.setText(object.getNamePost());
 
 
-        if (object.getView()!=null){
+        if (object.getView() != null){
             view.setText(object.getView());
-        }else{
+        } else {
             viewImage.setVisibility(View.GONE);
         }
 

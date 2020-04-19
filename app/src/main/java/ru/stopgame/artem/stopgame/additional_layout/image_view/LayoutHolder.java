@@ -3,8 +3,6 @@ package ru.stopgame.artem.stopgame.additional_layout.image_view;
 
 import android.app.Activity;
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.Color;
 import android.os.Build;
 import android.support.v4.content.ContextCompat;
 import android.text.Html;
@@ -17,28 +15,32 @@ import android.widget.TextView;
 
 import ru.stopgame.artem.stopgame.R;
 import ru.stopgame.artem.stopgame.additional_layout.other.HR;
-import ru.stopgame.artem.stopgame.repository.SettingRepository;
+import ru.stopgame.artem.stopgame.repository.SettingsRepository;
 
 import static android.text.Html.FROM_HTML_SEPARATOR_LINE_BREAK_HEADING;
+
 
 public class LayoutHolder {
     private LinearLayout linearLayout;
     private Context context;
     private Activity activity;
-    private SettingRepository repository;
+    private SettingsRepository repository;
 
 
+    //({"checkstyle:Indentation", "checkstyle:WhitespaceAround", "checkstyle:MissingJavadocMethod"})
     public LayoutHolder(Activity activity) {
         linearLayout = new LinearLayout(activity.getApplication().getBaseContext());
         this.activity=activity;
-        repository = new SettingRepository(activity.getApplication());
+        repository = new SettingsRepository(activity.getApplication());
         this.context = activity.getApplication().getBaseContext();
     }
+
 
     public LinearLayout getView() {
         return linearLayout;
     }
 
+    //({"checkstyle:Indentation", "checkstyle:WhitespaceAround", "checkstyle:NeedBraces", "checkstyle:MissingJavadocMethod"})
     public View addTextImage(String html){//Переписать
         LinearLayout layout = new LinearLayout(context);
         layout.setOrientation(LinearLayout.VERTICAL);
@@ -56,6 +58,7 @@ public class LayoutHolder {
     }
 
 
+    //({"checkstyle:Indentation", "checkstyle:NeedBraces", "checkstyle:WhitespaceAround"})
     private void putElementsView(LinearLayout layout, String html){
         if (html.contains("<hr>")){
             String[] texts = html.split("<hr>");
@@ -68,6 +71,7 @@ public class LayoutHolder {
             layout.addView(addTextView(html));
     }
 
+    //({"checkstyle:Indentation", "checkstyle:WhitespaceAround"})
     private View addTextView(String text){
         TextView textView = new TextView(context);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
@@ -83,6 +87,7 @@ public class LayoutHolder {
         return textView;
     }
 
+    //({"checkstyle:Indentation", "checkstyle:NeedBraces", "checkstyle:WhitespaceAround", "checkstyle:MissingJavadocMethod"})
     public LayoutImageView addImageView(String img){
         String src = img.split("src=\"")[1].split("\"")[0];
         LayoutImageView layout = new LayoutImageView(activity);
@@ -95,6 +100,7 @@ public class LayoutHolder {
         return layout;
     }
 
+    //({"checkstyle:Indentation", "checkstyle:WhitespaceAround", "checkstyle:MissingJavadocMethod"})
     public View addImageView(String text, int img){
         if (text==null){
             ImageView view = new ImageView(context);

@@ -18,8 +18,9 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import ru.stopgame.artem.stopgame.R;
-import ru.stopgame.artem.stopgame.repository.SettingRepository;
+import ru.stopgame.artem.stopgame.repository.SettingsRepository;
 
+//({"checkstyle:Indentation", "checkstyle:LineLength"})
 public class SettingsAppActivity extends AppCompatActivity {
     @BindView(R.id.spinner_change_notification)
     Spinner spinnerChangeNotification;
@@ -36,8 +37,10 @@ public class SettingsAppActivity extends AppCompatActivity {
 
     private String[] sizeText = {"8","10","12","14","16","18","20","22","24","26","28","30","32","34"};
     private String[] styleApp = {"Темный стиль","Светлый стиль"};
-    private SettingRepository repository=null;
+    //("checkstyle:WhitespaceAround")
+    private SettingsRepository repository=null;
 
+    //({"checkstyle:Indentation", "checkstyle:LineLength", "checkstyle:WhitespaceAround"})
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,7 +55,7 @@ public class SettingsAppActivity extends AppCompatActivity {
         getSupportActionBar().setLogo(R.drawable.logo);
         getSupportActionBar().setDisplayUseLogoEnabled(true);
 
-        repository= new SettingRepository(getApplicationContext());
+        repository= new SettingsRepository(getApplicationContext());
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, sizeText);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -78,6 +81,7 @@ public class SettingsAppActivity extends AppCompatActivity {
 
 
         switchNotification.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            //("checkstyle:LineLength")
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 Toast.makeText(SettingsAppActivity.this, "Скоро всё будет работать!", Toast.LENGTH_SHORT).show();
@@ -85,6 +89,7 @@ public class SettingsAppActivity extends AppCompatActivity {
         });
     }
 
+    //({"checkstyle:Indentation", "checkstyle:EmptyLineSeparator", "checkstyle:WhitespaceAround"})
     private AdapterView.OnItemSelectedListener selectedListenerSize(final int numberRep){
         AdapterView.OnItemSelectedListener parent =new AdapterView.OnItemSelectedListener() {
             @Override
@@ -99,6 +104,7 @@ public class SettingsAppActivity extends AppCompatActivity {
         return parent;
     }
 
+    //({"checkstyle:Indentation", "checkstyle:EmptyLineSeparator", "checkstyle:WhitespaceAround"})
     private AdapterView.OnItemSelectedListener selectedListenerStyle(final int numberRep){
         AdapterView.OnItemSelectedListener parent =new AdapterView.OnItemSelectedListener() {
             @Override
@@ -113,6 +119,7 @@ public class SettingsAppActivity extends AppCompatActivity {
         return parent;
     }
 
+    //({"checkstyle:Indentation", "checkstyle:WhitespaceAround"})
     private void checkSpinner(String text, String[] mass, Spinner spinner){
         for (int i=0;i<mass.length;i++){
             if (mass[i].equals(text)){
@@ -121,12 +128,14 @@ public class SettingsAppActivity extends AppCompatActivity {
         }
     }
 
+
     @Override
     public boolean onSupportNavigateUp() {
         onBackPressed();
         return true;
     }
 
+    //({"checkstyle:Indentation", "checkstyle:LineLength", "checkstyle:MissingSwitchDefault", "checkstyle:MissingJavadocMethod"})
     @OnClick({R.id.exit_acc, R.id.but_app})
     public void onViewClicked(View view) {
         switch (view.getId()) {

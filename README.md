@@ -29,3 +29,20 @@
 <p align="center">
   <img width="460" height="720" src="https://user-images.githubusercontent.com/18012660/43095411-2a6e4976-8ecf-11e8-95bf-f58454775b2f.png">
 </p>
+
+
+## Библиотеки
+1. [sugar](https://github.com/chennaione/sugar) бд 
+2. Butterknife ()
+3. Toothpick
+4. Moxy
+5. Dagger
+6. RXJava
+
+## Архитектура MVP
+
+## Сделать
+
+ [] Picture in picture
+ [] Сменить архитектуру на MVP
+ [] 

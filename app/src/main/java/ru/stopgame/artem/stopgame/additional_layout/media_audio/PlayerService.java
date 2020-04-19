@@ -57,10 +57,8 @@ import ru.stopgame.artem.stopgame.R;
 import ru.stopgame.artem.stopgame.ui.view.PostShowAppActivity;
 
 
+//({"checkstyle:Indentation", "checkstyle:LineLength", "checkstyle:CommentsIndentation", "checkstyle:ModifierOrder"})
 final public class PlayerService extends Service {
-
-    private final int NOTIFICATION_ID = 404;
-    private final String NOTIFICATION_DEFAULT_CHANNEL_ID = "default_channel";
 
     private final MediaMetadataCompat.Builder metadataBuilder = new MediaMetadataCompat.Builder();
 
@@ -83,9 +81,12 @@ final public class PlayerService extends Service {
     private ExtractorsFactory extractorsFactory;
     private DataSource.Factory dataSourceFactory;
 
+    //("checkstyle:WhitespaceAround")
     private String name=null;
+    //("checkstyle:WhitespaceAround")
     private String url=null;
 //    private final MusicRepository musicRepository = new MusicRepository();
+
 
 
     public PlayerService(String name, String url) {
@@ -93,6 +94,7 @@ final public class PlayerService extends Service {
         this.url = url;
     }
 
+    //({"checkstyle:Indentation", "checkstyle:LineLength"})
     @Override
     public void onCreate() {
         super.onCreate();
@@ -101,6 +103,7 @@ final public class PlayerService extends Service {
         url = MediaTransfer.getUrl();
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            String NOTIFICATION_DEFAULT_CHANNEL_ID = "default_channel";
             @SuppressLint("WrongConstant") NotificationChannel notificationChannel = new NotificationChannel(NOTIFICATION_DEFAULT_CHANNEL_ID, "StopGame", NotificationManagerCompat.IMPORTANCE_DEFAULT);
             NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
             notificationManager.createNotificationChannel(notificationChannel);
@@ -139,11 +142,13 @@ final public class PlayerService extends Service {
         this.extractorsFactory = new DefaultExtractorsFactory();
     }
 
+
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         MediaButtonReceiver.handleIntent(mediaSession, intent);
         return super.onStartCommand(intent, flags, startId);
     }
+
 
     @Override
     public void onDestroy() {
@@ -157,6 +162,7 @@ final public class PlayerService extends Service {
         private Uri currentUri;
         int currentState = PlaybackStateCompat.STATE_STOPPED;
 
+        //({"checkstyle:LineLength", "checkstyle:Indentation", "checkstyle:NeedBraces", "checkstyle:CommentsIndentation"})
         @Override
         public void onPlay() {
             if (!exoPlayer.getPlayWhenReady()) {
@@ -193,6 +199,7 @@ final public class PlayerService extends Service {
             refreshNotificationAndForegroundStatus(currentState);
         }
 
+        //({"checkstyle:LineLength", "checkstyle:Indentation"})
         @Override
         public void onPause() {
             if (exoPlayer.getPlayWhenReady()) {
@@ -206,6 +213,7 @@ final public class PlayerService extends Service {
             refreshNotificationAndForegroundStatus(currentState);
         }
 
+        //({"checkstyle:LineLength", "checkstyle:Indentation"})
         @Override
         public void onStop() {
             if (exoPlayer.getPlayWhenReady()) {
@@ -233,6 +241,7 @@ final public class PlayerService extends Service {
             stopSelf();
         }
 
+        //("checkstyle:CommentsIndentation")
         @Override
         public void onSkipToNext() {
 //            MusicRepository.Track track = musicRepository.getNext();
@@ -243,6 +252,7 @@ final public class PlayerService extends Service {
 //            prepareToPlay(track.getUri());
         }
 
+        //("checkstyle:CommentsIndentation")
         @Override
         public void onSkipToPrevious() {
 //            MusicRepository.Track track = musicRepository.getPrevious();
@@ -253,6 +263,7 @@ final public class PlayerService extends Service {
 //            prepareToPlay(track.getUri());
         }
 
+        //({"checkstyle:Indentation", "checkstyle:LineLength"})
         private void prepareToPlay(Uri uri) {
             if (!uri.equals(currentUri)) {
                 currentUri = uri;
@@ -261,6 +272,7 @@ final public class PlayerService extends Service {
             }
         }
 
+        //({"checkstyle:CommentsIndentation", "checkstyle:LineLength", "checkstyle:WhitespaceAround", "checkstyle:NeedBraces"})
         private void updateMetadataFromTrack() {
             if (name==null||url==null)return;
             metadataBuilder.putBitmap(MediaMetadataCompat.METADATA_KEY_ART, BitmapFactory.decodeResource(getResources(),R.drawable.logostopgame));//BitmapFactory.decodeResource(getResources(),R.drawable.logostopgame)
@@ -273,6 +285,7 @@ final public class PlayerService extends Service {
     };
 
     private AudioManager.OnAudioFocusChangeListener audioFocusChangeListener = new AudioManager.OnAudioFocusChangeListener() {
+
         @Override
         public void onAudioFocusChange(int focusChange) {
             switch (focusChange) {
@@ -290,6 +303,7 @@ final public class PlayerService extends Service {
     };
 
     private final BroadcastReceiver becomingNoisyReceiver = new BroadcastReceiver() {
+
         @Override
         public void onReceive(Context context, Intent intent) {
             // Disconnecting headphones - stop playback
@@ -300,10 +314,13 @@ final public class PlayerService extends Service {
     };
 
     private ExoPlayer.EventListener exoPlayerListener = new ExoPlayer.EventListener() {
+
         @Override
-        public void onTimelineChanged(Timeline timeline, Object manifest) {
+        public void onTimelineChanged(Timeline timeline, Object manifest, int reason) {
+
         }
 
+        //("checkstyle:LineLength")
         @Override
         public void onTracksChanged(TrackGroupArray trackGroups, TrackSelectionArray trackSelections) {
         }
@@ -311,6 +328,7 @@ final public class PlayerService extends Service {
         @Override
         public void onLoadingChanged(boolean isLoading) {
         }
+
 
         @Override
         public void onPlayerStateChanged(boolean playWhenReady, int playbackState) {
@@ -320,17 +338,34 @@ final public class PlayerService extends Service {
         }
 
         @Override
+        public void onRepeatModeChanged(int repeatMode) {
+
+        }
+
+        @Override
+        public void onShuffleModeEnabledChanged(boolean shuffleModeEnabled) {
+
+        }
+
+        @Override
         public void onPlayerError(ExoPlaybackException error) {
         }
 
         @Override
-        public void onPositionDiscontinuity() {
+        public void onPositionDiscontinuity(int reason) {
+
         }
 
         @Override
         public void onPlaybackParametersChanged(PlaybackParameters playbackParameters) {
         }
+
+        @Override
+        public void onSeekProcessed() {
+
+        }
     };
+
 
     @Nullable
     @Override
@@ -338,13 +373,17 @@ final public class PlayerService extends Service {
         return new PlayerServiceBinder();
     }
 
+
     public class PlayerServiceBinder extends Binder {
+
         public MediaSessionCompat.Token getMediaSessionToken() {
             return mediaSession.getSessionToken();
         }
     }
 
+    //({"checkstyle:Indentation", "checkstyle:LineLength"})
     private void refreshNotificationAndForegroundStatus(int playbackState) {
+        int NOTIFICATION_ID = 404;
         switch (playbackState) {
             case PlaybackStateCompat.STATE_PLAYING: {
                 startForeground(NOTIFICATION_ID, getNotification(playbackState));
@@ -362,6 +401,7 @@ final public class PlayerService extends Service {
         }
     }
 
+    //({"checkstyle:Indentation", "checkstyle:CommentsIndentation", "checkstyle:LineLength", "checkstyle:NeedBraces"})
     private Notification getNotification(int playbackState) {
         NotificationCompat.Builder builder = MediaStyleHelper.from(this, mediaSession);
         builder.addAction(new NotificationCompat.Action(android.R.drawable.ic_media_previous, getString(R.string.previous), MediaButtonReceiver.buildMediaButtonPendingIntent(this, PlaybackStateCompat.ACTION_SKIP_TO_PREVIOUS)));

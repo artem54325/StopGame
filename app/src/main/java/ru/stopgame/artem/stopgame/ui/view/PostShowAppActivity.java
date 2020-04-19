@@ -35,6 +35,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+
 import java.io.IOException;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -64,6 +66,7 @@ import ru.stopgame.artem.stopgame.ui.presenter.PostShowPresenter;
 /*
 * В данном активи совмещены сразу несколько элементов нужно разобрать*/
 
+//({"checkstyle:Indentation", "checkstyle:LineLength"})
 @TargetApi(Build.VERSION_CODES.M)
 public class PostShowAppActivity extends AppCompatActivity implements Views {
     @BindView(R.id.lin_layout)
@@ -75,10 +78,14 @@ public class PostShowAppActivity extends AppCompatActivity implements Views {
     private String url;
 
     private PostShow object = null;
+    //("checkstyle:WhitespaceAround")
     private DialogPostModel model=null;
+    //("checkstyle:WhitespaceAround")
     private String html=null;
+    //("checkstyle:WhitespaceAround")
     private List<Object> list=null;
 
+    //("checkstyle:WhitespaceAround")
     private ListView stickyList=null;
     private TabLayout tabLayout = null;
 
@@ -103,6 +110,7 @@ public class PostShowAppActivity extends AppCompatActivity implements Views {
     @BindView(R.id.comm_size_text_view)
     TextView commSizeText;
 
+    //({"checkstyle:Indentation", "checkstyle:NeedBraces"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);//onCreateOptionsMenu    //https://stopgame.ru/show/95367/evil_within_2_review
@@ -129,6 +137,7 @@ public class PostShowAppActivity extends AppCompatActivity implements Views {
         initialToolBar();
     }
 
+    //({"checkstyle:Indentation", "checkstyle:WhitespaceAround", "checkstyle:MissingJavadocMethod"})
     public void initialToolBar(){
         setSupportActionBar(myToolbar);
 
@@ -150,6 +159,7 @@ public class PostShowAppActivity extends AppCompatActivity implements Views {
         String url ="https://d1.stopgame.ru/audio/audio_preview_thebannersaga3.mp3";
     }
 
+    //({"checkstyle:Indentation", "checkstyle:LineLength", "checkstyle:NeedBraces", "checkstyle:MissingSwitchDefault"})
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         //item.getItemId()
@@ -184,30 +194,36 @@ public class PostShowAppActivity extends AppCompatActivity implements Views {
         return super.onOptionsItemSelected(item);
     }
 
+
     @Override
     public boolean onSupportNavigateUp() {
         onBackPressed();
         return true;
     }
 
+    //({"checkstyle:Indentation", "checkstyle:CommentsIndentation", "checkstyle:LineLength", "checkstyle:NeedBraces"})
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        if (object != null) outState.putSerializable("object", object);
-        if (model != null) outState.putSerializable("model", model);
-        if (html != null) outState.putString("html", html);
+        Gson gson = new Gson();
+        if (object != null) outState.putSerializable("object", gson.toJson(object));
+        if (model != null) outState.putSerializable("model", gson.toJson(model));
+        if (html != null) outState.putString("html", gson.toJson(html));
 //        if (list != null) outState.putSerializable("list", list);//ИСПРАВИТЬ, ПРИНАЖАТИЮ НА КНОПКУ ВСЁ BUT ПИШЕТ ОШИБКУ,
     }
 
+    //({"checkstyle:Indentation", "checkstyle:WhitespaceAround", "checkstyle:NeedBraces", "checkstyle:LineLength"})
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {//Восстановление объекта //DialogPostModel model String html List<Object> list
-        if (savedInstanceState.getSerializable("object")!=null) this.views((PostShow) savedInstanceState.getSerializable("object"));
-        if (savedInstanceState.getSerializable("model")!=null) this.viewBut((DialogPostModel) savedInstanceState.getSerializable("model"));
+        Gson gson = new Gson();// PostShow
+        if (savedInstanceState.getSerializable("object")!=null) this.views(gson.fromJson(savedInstanceState.getString("object"), PostShow.class));
+        if (savedInstanceState.getSerializable("model")!=null) this.viewBut(gson.fromJson(savedInstanceState.getString("model"), DialogPostModel.class));
         if (savedInstanceState.getSerializable("html")!=null) this.pageNoPars(savedInstanceState.getString("html"));
-        if (savedInstanceState.getSerializable("list")!=null) this.viewsGame((List<Object>) savedInstanceState.get("list"));
+        if (savedInstanceState.getSerializable("list")!=null) this.viewsGame(gson.fromJson(savedInstanceState.getString("list"), ArrayList.class));
         super.onRestoreInstanceState(savedInstanceState);
     }
 
+    //({"checkstyle:Indentation", "checkstyle:NeedBraces", "checkstyle:LineLength", "checkstyle:WhitespaceAround"})
     @Override
     public void views(PostShow object) {
         if (object == null) return;
@@ -261,9 +277,10 @@ public class PostShowAppActivity extends AppCompatActivity implements Views {
         }
     }
 
+    //({"checkstyle:Indentation", "checkstyle:MissingJavadocMethod"})
     public void pageNoPars(String html) {
         linLayout.removeAllViews();
-        but.setSize(0);
+        but.setSize(FloatingActionButton.SIZE_NORMAL);
         WebView view = new WebView(this);
         view.getSettings().setJavaScriptEnabled(true);
         view.loadData(html, "text/html", "UTF-8");
@@ -273,6 +290,7 @@ public class PostShowAppActivity extends AppCompatActivity implements Views {
         but.setVisibility(View.GONE);
     }
 
+    //({"checkstyle:Indentation", "checkstyle:WhitespaceAround", "checkstyle:MissingJavadocMethod"})
     public void viewBut(final DialogPostModel model) {
         if (model==null||url.contains("/blogs/")){
             but.setVisibility(View.INVISIBLE);
@@ -287,6 +305,7 @@ public class PostShowAppActivity extends AppCompatActivity implements Views {
         }
     }
 
+    //({"checkstyle:Indentation", "checkstyle:NeedBraces", "checkstyle:WhitespaceAround", "checkstyle:RightCurly", "checkstyle:GenericWhitespace", "checkstyle:MissingJavadocMethod"})
     public void viewsGame(List<Object> list) {//Начало говно кода. ПЕРЕПИСАТЬ СДЕЛАТЬ РАЗБИТЬ КОНСТРУКЦИЮ НА ЭЛЕМЕНТЫ!
         List<MenuBaseItem>baseItems = new ArrayList<>();
         if (stickyList==null){
@@ -312,6 +331,7 @@ public class PostShowAppActivity extends AppCompatActivity implements Views {
             final List<MenuBaseItem> finalBaseItems = baseItems;
             final PostShowAppActivity activity = this;
             tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+                //({"checkstyle:LineLength", "checkstyle:CommentsIndentation", "checkstyle:WhitespaceAround"})
                 @Override
                 public void onTabSelected(TabLayout.Tab tab) {//Только выбрал
 //                Toast.makeText(PostShowAppActivity.this, finalBaseItems.get(tab.getPosition()).getUrl(), Toast.LENGTH_SHORT).show();
@@ -340,6 +360,7 @@ public class PostShowAppActivity extends AppCompatActivity implements Views {
         AdapterNews adapter = new AdapterNews(this, list);
         stickyList.setAdapter(adapter);
     }
+
 
 
     @Override

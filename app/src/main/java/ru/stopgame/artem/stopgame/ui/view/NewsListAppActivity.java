@@ -1,11 +1,9 @@
 package ru.stopgame.artem.stopgame.ui.view;
 
-import android.annotation.TargetApi;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
@@ -29,10 +27,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
-import java.io.IOException;
-import java.net.URI;
-import java.net.URL;
-import java.util.ArrayList;
 import java.util.List;
 
 import pl.openrnd.multilevellistview.ItemInfo;
@@ -42,15 +36,14 @@ import pl.openrnd.multilevellistview.OnItemClickListener;
 import ru.stopgame.artem.stopgame.R;
 import ru.stopgame.artem.stopgame.additional_layout.news_item.AdapterNews;
 import ru.stopgame.artem.stopgame.additional_layout.other.LevelBeamView;
-import ru.stopgame.artem.stopgame.dataBase.DataBaseService;
+import ru.stopgame.artem.stopgame.repository.ServiceRepository;
 import ru.stopgame.artem.stopgame.models.MenuBaseItem;
 import ru.stopgame.artem.stopgame.ui.presenter.NewsListPresent;
-import ru.stopgame.artem.stopgame.ui.presenter.PostShowPresenter;
+
 
 
 public class NewsListAppActivity extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener{
     private NewsListPresent presenter;
-    private Toolbar myToolbar;
     private DrawerLayout mDrawer;
     private SwipeRefreshLayout mSwipeRefreshLayout;
     private NewsListAppActivity newsListAppActivity = this;
@@ -79,6 +72,7 @@ public class NewsListAppActivity extends AppCompatActivity implements SwipeRefre
             if (baseItems.size()==0)return;
             final List<MenuBaseItem> finalBaseItems = baseItems;
             tabs.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+                //("checkstyle:WhitespaceAround")
                 @Override
                 public void onTabSelected(TabLayout.Tab tab) {//Только выбрал
                     presenter.setUrl(finalBaseItems.get(tab.getPosition()).getUrl());
@@ -113,6 +107,7 @@ public class NewsListAppActivity extends AppCompatActivity implements SwipeRefre
             if (baseItems.size()==0)return;
             final List<MenuBaseItem> finalBaseItems = baseItems;
             tabs2.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+                //("checkstyle:WhitespaceAround")
                 @Override
                 public void onTabSelected(TabLayout.Tab tab) {//Только выбрал
                     presenter.setUrl(finalBaseItems.get(tab.getPosition()).getUrl());
@@ -170,11 +165,12 @@ public class NewsListAppActivity extends AppCompatActivity implements SwipeRefre
         presenter = new NewsListPresent(this, url);
         presenter.getHttp();
 
-        myToolbar = (Toolbar)findViewById(R.id.toolbar);
+        Toolbar myToolbar = (Toolbar) findViewById(R.id.toolbar);
         mDrawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         final NewsListAppActivity appActivity = this;
 
         ((Button)mDrawer.findViewById(R.id.but_authorization)).setOnClickListener(new View.OnClickListener() {
+            //("checkstyle:CommentsIndentation")
             @Override
             public void onClick(View v) {
 //                Intent intent = new Intent(appActivity, AuthenticationAppActivity.class);
@@ -218,9 +214,11 @@ public class NewsListAppActivity extends AppCompatActivity implements SwipeRefre
         confMenu();
     }
 
+
     private void setupDrawerContent(NavigationView navigationView) {
         navigationView.setNavigationItemSelectedListener(
                 new NavigationView.OnNavigationItemSelectedListener() {
+
                     @Override
                     public boolean onNavigationItemSelected(MenuItem menuItem) {
                         selectDrawerItem(menuItem);
@@ -275,6 +273,7 @@ public class NewsListAppActivity extends AppCompatActivity implements SwipeRefre
         mDrawer.closeDrawers();}
 
 
+
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -300,11 +299,13 @@ public class NewsListAppActivity extends AppCompatActivity implements SwipeRefre
         return true;
     }
 
+
     @Override
     public void onRefresh() {
         presenter.getHttp();
         mSwipeRefreshLayout.setRefreshing(false);
     }
+
 
     private void confMenu() {
         multiLevelListView = (MultiLevelListView) findViewById(R.id.multiLevelMenu);
@@ -339,13 +340,16 @@ public class NewsListAppActivity extends AppCompatActivity implements SwipeRefre
             showItemDescription(item, itemInfo);
         }
     };
+
     public List<MenuBaseItem> getInitialItems() {
-        DataBaseService service = new DataBaseService(getApplicationContext());
+        ServiceRepository service = new ServiceRepository(getApplicationContext());
         List<MenuBaseItem> list = service.getAllMenuList();
         service.close();
         return list;
     }
+
     private class ListAdapter extends MultiLevelListAdapter {
+
 
         private class ViewHolder {
             TextView nameView;
@@ -354,10 +358,12 @@ public class NewsListAppActivity extends AppCompatActivity implements SwipeRefre
             LevelBeamView levelBeamView;
         }
 
+
         @Override
         public List<?> getSubObjects(Object object) {
             return ((MenuBaseItem)object).getArray();
         }
+
 
         @Override
         public boolean isExpandable(Object object) {

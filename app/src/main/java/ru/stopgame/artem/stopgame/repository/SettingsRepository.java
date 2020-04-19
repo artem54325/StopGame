@@ -9,10 +9,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import com.google.gson.Gson;
 
-import java.lang.reflect.Type;
-import java.util.ArrayList;
-
-public class SettingRepository {
+//({"checkstyle:Indentation", "checkstyle:CommentsIndentation"})
+public class SettingsRepository {
     DBHelper dbHelper;
     Gson gson = new Gson();
 //    Type type = new TypeToken<List<TrainingModel>>() {}.getType();
@@ -28,7 +26,8 @@ public class SettingRepository {
     * 8-
     * */
 
-    public SettingRepository(Context context) {
+    //({"checkstyle:Indentation", "checkstyle:WhitespaceAround", "checkstyle:MissingJavadocMethod"})
+    public SettingsRepository(Context context) {
         dbHelper = new DBHelper(context);
         if (get(3)==null) {
             set("Темный стиль", 3);
@@ -38,6 +37,7 @@ public class SettingRepository {
         }
     }
 
+    //({"checkstyle:Indentation", "checkstyle:WhitespaceAround", "checkstyle:MissingJavadocMethod"})
     public void set(String name, int numberRep){
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         ContentValues cv = new ContentValues();
@@ -53,6 +53,7 @@ public class SettingRepository {
         db.close();
     }
 
+    //({"checkstyle:Indentation", "checkstyle:CommentsIndentation", "checkstyle:WhitespaceAround", "checkstyle:MissingJavadocMethod"})
     public String get(int numberRep){
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         Cursor cursor = db.query("mytable", null, null, null, null, null,null);
@@ -78,11 +79,14 @@ public class SettingRepository {
 
 
 
+    //({"checkstyle:Indentation", "checkstyle:AbbreviationAsWordInName"})
     private class DBHelper extends SQLiteOpenHelper {
+
 
         public DBHelper(Context context) {
             super(context, "stopgameDB", null, 1);
         }
+
 
         @Override
         public void onCreate(SQLiteDatabase db) {
@@ -90,6 +94,7 @@ public class SettingRepository {
                     + "id integer primary key autoincrement,"
                     + "lists text);");
         }
+
 
         @Override
         public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {

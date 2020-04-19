@@ -1,4 +1,4 @@
-package ru.stopgame.artem.stopgame.dataBase;
+package ru.stopgame.artem.stopgame.repository;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -17,7 +17,8 @@ import ru.stopgame.artem.stopgame.models.MenuBaseItem;
 import static android.content.ContentValues.TAG;
 
 
-public class DataBaseService extends SQLiteOpenHelper {
+//({"checkstyle:Indentation", "checkstyle:EmptyLineSeparator"})
+public class ServiceRepository extends SQLiteOpenHelper {
 
     private Gson gson = new Gson();
     public static final String COLUMN_ID = "_id";
@@ -29,14 +30,17 @@ public class DataBaseService extends SQLiteOpenHelper {
             + " integer primary key autoincrement, " + COLUMN_MENU
             + " text not null);";
 
-    public DataBaseService(Context context) {
+
+    public ServiceRepository(Context context) {
         super(context, "DBService", null, 1);
     }
+
 
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(DATABASE_CREATE);
     }
+
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
@@ -44,6 +48,7 @@ public class DataBaseService extends SQLiteOpenHelper {
         onCreate(db);
     }
 
+    //({"checkstyle:Indentation", "checkstyle:WhitespaceAround", "checkstyle:MissingJavadocMethod"})
     public void addAllMenu(List<MenuBaseItem> menuList){
         ContentValues cv = null;
         SQLiteDatabase db = this.getWritableDatabase();
@@ -55,6 +60,7 @@ public class DataBaseService extends SQLiteOpenHelper {
         }
         db.close();
     }
+    //({"checkstyle:Indentation", "checkstyle:WhitespaceAround", "checkstyle:MissingJavadocMethod"})
     public List<MenuBaseItem> getAllMenuList(){
         SQLiteDatabase db = this.getWritableDatabase();
         List<MenuBaseItem> menuList = new ArrayList<>();
@@ -71,6 +77,7 @@ public class DataBaseService extends SQLiteOpenHelper {
         return menuList;
     }
 
+    //({"checkstyle:Indentation", "checkstyle:CommentsIndentation", "checkstyle:WhitespaceAround"})
     private void removeAll(SQLiteDatabase db){
         db.beginTransaction();
         try {
@@ -84,6 +91,7 @@ public class DataBaseService extends SQLiteOpenHelper {
             db.endTransaction();
         }
     }
+
 
     private MenuBaseItem cursorToMenuBaseItem(Cursor cursor) {
         MenuBaseItem item = gson.fromJson(cursor.getString(1), MenuBaseItem.class);

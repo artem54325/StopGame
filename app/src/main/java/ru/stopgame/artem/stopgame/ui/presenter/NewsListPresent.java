@@ -2,7 +2,7 @@ package ru.stopgame.artem.stopgame.ui.presenter;
 
 import android.content.Intent;
 
-import ru.stopgame.artem.stopgame.dataBase.DataBaseService;
+import ru.stopgame.artem.stopgame.repository.ServiceRepository;
 import ru.stopgame.artem.stopgame.parsers.PageNewsParser;
 import ru.stopgame.artem.stopgame.ui.Presenter;
 import ru.stopgame.artem.stopgame.ui.view.NewsListAppActivity;
@@ -10,12 +10,13 @@ import ru.stopgame.artem.stopgame.ui.view.PostShowAppActivity;
 import ru.stopgame.artem.stopgame.utility.HttpCleint;
 
 
+
 public class NewsListPresent implements Presenter {
     private final NewsListAppActivity activity;
-    private HttpCleint httpClient;
     private String url;
 
 
+    //({"checkstyle:Indentation", "checkstyle:WhitespaceAround", "checkstyle:LineLength", "checkstyle:NeedBraces", "checkstyle:MissingJavadocMethod"})
     public NewsListPresent(NewsListAppActivity activity, String url) {
         this.activity = activity;
         if (url == null) this.url = "https://stopgame.ru/";
@@ -32,6 +33,7 @@ public class NewsListPresent implements Presenter {
         }
     }
 
+    //({"checkstyle:Indentation", "checkstyle:WhitespaceAround", "checkstyle:LineLength", "checkstyle:NeedBraces", "checkstyle:MissingJavadocMethod"})
     public void setUrl(String url) {
         if (url == null) this.url = "https://stopgame.ru/";
         else {
@@ -47,19 +49,22 @@ public class NewsListPresent implements Presenter {
         }
     }
 
+
     @Override
     public void getHttp() {
-        httpClient = new HttpCleint(activity.getApplicationContext(), this);
+        HttpCleint httpClient = new HttpCleint(activity.getApplicationContext(), this);
         httpClient.execute(url);
     }
+
 
     @Override
     public void viewsPresent(final String html) {
         activity.runOnUiThread(new Runnable() {
+            //("checkstyle:NeedBraces")
             @Override
             public void run() {
                 if (html == null) return;
-                DataBaseService service = new DataBaseService(activity.getApplicationContext());
+                ServiceRepository service = new ServiceRepository(activity.getApplicationContext());
                 service.addAllMenu(PageNewsParser.parserMenu(html));
                 service.close();
                 activity.views(PageNewsParser.parser(html));//PagePostParser.parsShow(html)

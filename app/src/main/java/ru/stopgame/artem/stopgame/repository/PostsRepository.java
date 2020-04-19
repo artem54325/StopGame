@@ -1,20 +1,23 @@
-package ru.stopgame.artem.stopgame.dataBase;
+package ru.stopgame.artem.stopgame.repository;
+
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 
+public class PostsRepository extends SQLiteOpenHelper {
 
-public class AuthentificationDataBase extends SQLiteOpenHelper {
-    public AuthentificationDataBase(Context context) {
-        super(context, "DBAuthentification", null, 1);
+    public PostsRepository(Context context) {
+        super(context, "DBPosts", null, 1);
     }
+
 
     @Override
     public void onCreate(SQLiteDatabase db) {
 
     }
+
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
