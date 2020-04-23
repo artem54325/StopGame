@@ -3,7 +3,6 @@ package ru.stopgame.artem.stopgame.models;
 
 import android.graphics.Bitmap;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 

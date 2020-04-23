@@ -2,10 +2,7 @@ package ru.stopgame.artem.stopgame.additional_layout.image_view;
 
 
 import android.app.Activity;
-import android.content.Context;
 import android.widget.LinearLayout;
-
-import com.google.gson.Gson;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -260,7 +257,7 @@ public class LayoutTextViewAdapter {
         listLayout = new ArrayList<>();
 
         List<String> list = new ArrayList<>();
-        String[] strings = html.split("\n|\t");
+        String[] strings = html.split("[\n\t]");
 
         if (!html.contains("<div ")){//Это для комментариев, по идеи должно сработать
             listHtml.add(html);

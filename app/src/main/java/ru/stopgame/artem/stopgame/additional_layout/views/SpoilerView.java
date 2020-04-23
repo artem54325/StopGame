@@ -2,7 +2,6 @@ package ru.stopgame.artem.stopgame.additional_layout.views;
 
 
 import android.app.Activity;
-import android.content.Context;
 import android.text.Html;
 import android.view.View;
 import android.widget.ImageView;
@@ -18,7 +17,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import ru.stopgame.artem.stopgame.R;
-import ru.stopgame.artem.stopgame.additional_layout.image_view.LayoutHolder;
 import ru.stopgame.artem.stopgame.additional_layout.image_view.LayoutTextViewAdapter;
 
 public class SpoilerView extends LinearLayout{

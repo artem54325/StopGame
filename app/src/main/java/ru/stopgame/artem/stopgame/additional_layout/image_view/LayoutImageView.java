@@ -3,7 +3,6 @@ package ru.stopgame.artem.stopgame.additional_layout.image_view;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
@@ -18,10 +17,7 @@ import com.github.chrisbanes.photoview.PhotoView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import ru.stopgame.artem.stopgame.MainActivity;
 import ru.stopgame.artem.stopgame.R;
-import ru.stopgame.artem.stopgame.ui.view.NewsListAppActivity;
-import ru.stopgame.artem.stopgame.ui.view.PostShowAppActivity;
 import ru.stopgame.artem.stopgame.utility.DowlandImage;
 
 public class LayoutImageView extends LinearLayout {
@@ -33,10 +29,9 @@ public class LayoutImageView extends LinearLayout {
     @BindView(R.id.image_text_layout)
     LinearLayout imageTextLayout;
     private Drawable draweble=null;
-    private Activity activity;
+
     public LayoutImageView(final Activity activity) {
         super(activity);
-        this.activity=activity;
 
         inflate(getContext(), R.layout.image_view, this);
         ButterKnife.bind(this);

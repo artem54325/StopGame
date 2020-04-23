@@ -8,7 +8,6 @@ import java.util.Date;
 
 public class Authorization extends SugarRecord {
 
-    //({"checkstyle:Indentation", "checkstyle:MissingJavadocMethod"})
     public Authorization(String username, String password) {
         this.username = username;
         this.password = password;

@@ -51,8 +51,6 @@ public class NewsListAppActivity extends AppCompatActivity implements SwipeRefre
     private TabLayout tabs2 =null;
     private List<Object> newsItems=null;
 
-    private MultiLevelListView multiLevelListView;
-
     public void views(List<Object> list) {
         LinearLayout layout = (LinearLayout)findViewById(R.id.layout);
         newsItems=list;
@@ -308,7 +306,7 @@ public class NewsListAppActivity extends AppCompatActivity implements SwipeRefre
 
 
     private void confMenu() {
-        multiLevelListView = (MultiLevelListView) findViewById(R.id.multiLevelMenu);
+        MultiLevelListView multiLevelListView = (MultiLevelListView) findViewById(R.id.multiLevelMenu);
 
         // custom ListAdapter
         ListAdapter listAdapter = new ListAdapter();

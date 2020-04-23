@@ -12,11 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ru.stopgame.artem.stopgame.R;
-import ru.stopgame.artem.stopgame.additional_layout.game_description.GameTableLayout;
-import ru.stopgame.artem.stopgame.additional_layout.news_item.AdapterNews;
-import ru.stopgame.artem.stopgame.models.GameTable;
 import ru.stopgame.artem.stopgame.models.MenuBaseItem;
-import ru.stopgame.artem.stopgame.ui.presenter.PostShowPresenter;
 import ru.stopgame.artem.stopgame.ui.view.PostShowAppActivity;
 
 

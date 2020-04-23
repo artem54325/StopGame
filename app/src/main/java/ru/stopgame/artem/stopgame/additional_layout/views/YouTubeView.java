@@ -8,16 +8,11 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.LinearLayout;
 
-import com.google.android.youtube.player.YouTubeBaseActivity;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
 import ru.stopgame.artem.stopgame.R;
 
 
 public class YouTubeView extends LinearLayout {
     private WebView mWebView;
-    private View view;
 
     public YouTubeView(Context context) {
         super(context);
@@ -26,7 +21,6 @@ public class YouTubeView extends LinearLayout {
     }
     public YouTubeView(View view){
         super(view.getContext());
-        this.view=view;
         mWebView = view.findViewById(R.id.webView);
     }
 

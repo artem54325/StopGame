@@ -14,7 +14,6 @@ import ru.stopgame.artem.stopgame.utility.HttpCleint;
 
 public class AuthenticationAppActivity extends AppCompatActivity implements Presenter {
 
-    private HttpCleint cleint;
     private int a = 0;
 
     @Override
@@ -27,7 +26,7 @@ public class AuthenticationAppActivity extends AppCompatActivity implements Pres
 
         authenticationHttp();
 
-        findViewById(R.id.login).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.aut_authorization).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 authenticationHttp();
@@ -37,17 +36,17 @@ public class AuthenticationAppActivity extends AppCompatActivity implements Pres
         findViewById(R.id.aut_password).setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
-                if (keyCode == KeyEvent.KEYCODE_ENTER){
+                if (keyCode == KeyEvent.KEYCODE_ENTER) {
                     authenticationHttp();
                     return true;
                 }
                 return false;
             }
         });
-        findViewById(R.id.login).setOnKeyListener(new View.OnKeyListener() {
+        findViewById(R.id.aut_authorization).setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
-                if (keyCode == KeyEvent.KEYCODE_ENTER){
+                if (keyCode == KeyEvent.KEYCODE_ENTER) {
                     authenticationHttp();
                     return true;
                 }
@@ -56,24 +55,21 @@ public class AuthenticationAppActivity extends AppCompatActivity implements Pres
         });
     }
 
-    public void authenticationHttp(){
-        String userName = ((EditText)findViewById(R.id.aut_login)).getText().toString();
-        String password = ((EditText)findViewById(R.id.aut_password)).getText().toString();
+    public void authenticationHttp() {
+        String userName = ((EditText) findViewById(R.id.aut_login)).getText().toString();
+        String password = ((EditText) findViewById(R.id.aut_password)).getText().toString();
 
-        cleint = new HttpCleint(this, this);
+        HttpCleint cleint = new HttpCleint(this, this);
 
-        if (a==0)
-            cleint.execute("https://stopgame.ru/");
-        else
-            cleint.execute("https://stopgame.ru/users/login", userName, password);
+        if (a == 0) cleint.execute("https://stopgame.ru/");
+        else cleint.execute("https://stopgame.ru/users/login", userName, password);
         a++;
     }
 
     @Override
-    public void viewsPresent(String html){//Написать чтобы картинка появлялась в меню и имя
+    public void viewsPresent(String html) {//Написать чтобы картинка появлялась в меню и имя
         System.out.println(html);
     }
-
 
 
     @Override

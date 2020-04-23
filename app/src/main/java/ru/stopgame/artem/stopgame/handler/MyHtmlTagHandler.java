@@ -1,6 +1,5 @@
 package ru.stopgame.artem.stopgame.handler;
 
-import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.text.Editable;
@@ -15,7 +14,6 @@ import java.util.Vector;
 
 
 public class MyHtmlTagHandler{
-    private int mListItemCount = 0;
     private Vector<String> mListParents = new Vector<String>();
     public Html.TagHandler tagHandler(){
         return new HtmlTagHandler();
@@ -33,7 +31,7 @@ public class MyHtmlTagHandler{
                     mListParents.add(tag);
                 } else mListParents.remove(tag);
 
-                mListItemCount = 0;
+                int mListItemCount = 0;
             } else if (tag.equals("li") && !opening) {
                 System.out.println(output + " wew");
             }

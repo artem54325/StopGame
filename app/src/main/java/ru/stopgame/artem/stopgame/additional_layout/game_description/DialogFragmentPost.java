@@ -9,15 +9,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TableLayout;
-import android.widget.TableRow;
 import android.widget.TextView;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
 import ru.stopgame.artem.stopgame.R;
 import ru.stopgame.artem.stopgame.models.DialogPostModel;
 import ru.stopgame.artem.stopgame.ui.view.PostShowAppActivity;

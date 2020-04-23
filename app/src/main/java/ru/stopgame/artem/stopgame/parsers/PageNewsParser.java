@@ -1,15 +1,12 @@
 package ru.stopgame.artem.stopgame.parsers;
 
 
-import android.widget.ListView;
-
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 import ru.stopgame.artem.stopgame.models.ImgAndUrl;

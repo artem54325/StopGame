@@ -1,26 +1,17 @@
 package ru.stopgame.artem.stopgame.ui.view;
 
 import android.annotation.TargetApi;
-import android.app.FragmentManager;
 import android.content.ClipData;
 import android.content.ClipboardManager;
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
-import android.content.ServiceConnection;
-import android.media.AudioManager;
-import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.IBinder;
-import android.os.RemoteException;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.content.ContextCompat;
-import android.support.v4.media.session.MediaControllerCompat;
-import android.support.v4.media.session.PlaybackStateCompat;
 import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -37,8 +28,6 @@ import android.widget.Toast;
 
 import com.google.gson.Gson;
 
-import java.io.IOException;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -52,7 +41,6 @@ import ru.stopgame.artem.stopgame.additional_layout.game_description.GameTableLa
 import ru.stopgame.artem.stopgame.additional_layout.game_description.PubInfoPost;
 import ru.stopgame.artem.stopgame.additional_layout.image_view.LayoutTextViewAdapter;
 import ru.stopgame.artem.stopgame.additional_layout.media_audio.MediaLayout;
-import ru.stopgame.artem.stopgame.additional_layout.media_audio.PlayerService;
 import ru.stopgame.artem.stopgame.additional_layout.news_item.AdapterNews;
 import ru.stopgame.artem.stopgame.additional_layout.views.TagsView;
 import ru.stopgame.artem.stopgame.models.Comment;

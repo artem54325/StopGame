@@ -2,7 +2,6 @@ package ru.stopgame.artem.stopgame.additional_layout.game_description;
 
 
 import android.app.Activity;
-import android.content.Context;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;

@@ -5,17 +5,7 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.widget.Toast;
 
-import java.io.BufferedReader;
-import java.io.DataOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.CookieHandler;
-import java.net.CookieManager;
-import java.net.CookiePolicy;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -23,17 +13,13 @@ import java.util.List;
 
 import okhttp3.Cookie;
 import okhttp3.CookieJar;
-import okhttp3.FormBody;
 import okhttp3.HttpUrl;
 import okhttp3.MediaType;
-import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 import ru.stopgame.artem.stopgame.ui.Presenter;
-
-import static org.jsoup.nodes.Document.OutputSettings.Syntax.html;
 
 public class HttpCleint extends AsyncTask<String, Void, String> {
     private Context context;

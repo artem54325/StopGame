@@ -8,17 +8,27 @@ import android.view.KeyboardShortcutGroup;
 import android.view.Menu;
 import android.view.View;
 import android.view.Window;
-
+import android.widget.EditText;
+import android.widget.Toast;
 
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 import ru.stopgame.artem.stopgame.R;
 
 
-public class AuthorizationAlertDialog extends Dialog implements View.OnClickListener {
+public class AuthorizationDialog extends Dialog implements View.OnClickListener {
+    @BindView(R.id.aut_login)
+    EditText loginEdit;
+    @BindView(R.id.aut_password)
+    EditText passwordEdit;
 
-    public AuthorizationAlertDialog(@NonNull Context context) {
+    public AuthorizationDialog(@NonNull Context context) {
         super(context);
+        setContentView(R.layout.authentication_layout);
+        ButterKnife.bind(this);
 
         requestWindowFeature(Window.FEATURE_NO_TITLE);
 //        setContentView(R.layout.dialog_delete_place);
@@ -26,6 +36,11 @@ public class AuthorizationAlertDialog extends Dialog implements View.OnClickList
 //        no = (Button) findViewById(R.id.but_no);
 //        yes.setOnClickListener(this);
 //        no.setOnClickListener(this);
+    }
+
+    @OnClick(R.id.aut_authorization) void authorization() {
+        Toast.makeText(this.getContext(), "Authorization " +
+                loginEdit.getText(), Toast.LENGTH_SHORT).show();
     }
 
 

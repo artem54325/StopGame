@@ -25,3 +25,17 @@ allprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+apply plugin: 'checkstyle'
+
+task checkstyle(type: Checkstyle) {
+    description 'Check code standard'
+    group 'verification'
+
+    configFile file('./checkstyle/checkstyle.xml')
+    source 'main'
+    include '**/*.java'
+    exclude '**/gen/**'
+
+    classpath = files()
+    ignoreFailures = false
+}

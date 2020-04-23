@@ -1,13 +1,8 @@
 package ru.stopgame.artem.stopgame.additional_layout.media_audio;
 
 import android.app.Activity;
-import android.content.ComponentName;
-import android.content.Intent;
 import android.content.ServiceConnection;
-import android.os.IBinder;
-import android.os.RemoteException;
 import android.support.v4.media.session.MediaControllerCompat;
-import android.support.v4.media.session.PlaybackStateCompat;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
@@ -19,9 +14,6 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import ru.stopgame.artem.stopgame.R;
 import ru.stopgame.artem.stopgame.additional_layout.views.YouTubeView;
-import ru.stopgame.artem.stopgame.ui.view.PostShowAppActivity;
-
-import static android.content.Context.BIND_AUTO_CREATE;
 
 
 public class MediaLayout extends LinearLayout {
