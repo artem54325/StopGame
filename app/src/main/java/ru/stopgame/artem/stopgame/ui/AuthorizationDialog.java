@@ -30,7 +30,7 @@ public class AuthorizationDialog extends Dialog implements View.OnClickListener 
         setContentView(R.layout.authentication_layout);
         ButterKnife.bind(this);
 
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
+//        requestWindowFeature(Window.FEATURE_NO_TITLE);
 //        setContentView(R.layout.dialog_delete_place);
 //        yes = (Button) findViewById(R.id.but_yes);
 //        no = (Button) findViewById(R.id.but_no);

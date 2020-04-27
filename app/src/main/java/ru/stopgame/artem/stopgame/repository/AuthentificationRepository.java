@@ -1,7 +1,9 @@
 package ru.stopgame.artem.stopgame.repository;
 
 
-public class AuthentificationRepository {
+import com.orm.SugarRecord;
+
+public class AuthentificationRepository  {
     public void getActiveUser(){
 
     }

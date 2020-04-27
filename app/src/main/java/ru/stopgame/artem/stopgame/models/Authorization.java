@@ -6,6 +6,7 @@ import com.orm.dsl.Unique;
 import java.util.Date;
 
 
+
 public class Authorization extends SugarRecord {
 
     public Authorization(String username, String password) {
@@ -18,10 +19,10 @@ public class Authorization extends SugarRecord {
     public Authorization() {
     }
     @Unique
-    private String username;
-    private String password;
-    private Date dateAuthorization;
-    private boolean activeStatus;
+     String username;
+     String password;
+     Date dateAuthorization;
+     boolean activeStatus;
 
 
     public String getUsername() {
