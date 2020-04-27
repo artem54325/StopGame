@@ -20,7 +20,8 @@ import ru.stopgame.artem.stopgame.models.OnlineAnnouncer;
 import ru.stopgame.artem.stopgame.R;
 
 
-public class AdapterNews extends BaseAdapter{
+public class AdapterNews extends BaseAdapter
+{
     private List<Object> list;
     private LayoutInflater inflater;
 

@@ -1,6 +1,7 @@
 package ru.stopgame.artem.stopgame.utility;
 
 
+import android.annotation.SuppressLint;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
@@ -28,6 +29,8 @@ public class DowlandImage extends AsyncTask<String, Void, Bitmap> {
         this.view = view;
     }
 
+    @SuppressLint("WrongThread")
+    @SuppressWarnings("checkstyle:Indentation")
     protected Bitmap doInBackground(String...urls){
         urlOfImage = urls[0];
         Bitmap logo = null;
