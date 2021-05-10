@@ -21,9 +21,8 @@ import ru.stopgame.artem.stopgame.R;
 
 
 public class AdapterNews extends BaseAdapter
-//        implements StickyListHeadersAdapter
 {
-    private List<Object> list = new ArrayList<>();
+    private List<Object> list;
     private LayoutInflater inflater;
 
 

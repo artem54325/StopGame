@@ -4,7 +4,6 @@ package ru.stopgame.artem.stopgame.additional_layout.news_item;
 import android.content.Intent;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 
 import java.util.List;
 

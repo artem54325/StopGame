@@ -38,6 +38,7 @@ import ru.stopgame.artem.stopgame.additional_layout.news_item.AdapterNews;
 import ru.stopgame.artem.stopgame.additional_layout.other.LevelBeamView;
 import ru.stopgame.artem.stopgame.repository.ServiceRepository;
 import ru.stopgame.artem.stopgame.models.MenuBaseItem;
+import ru.stopgame.artem.stopgame.ui.AuthorizationDialog;
 import ru.stopgame.artem.stopgame.ui.presenter.NewsListPresent;
 
 
@@ -50,8 +51,6 @@ public class NewsListAppActivity extends AppCompatActivity implements SwipeRefre
     private TabLayout tabs =null;
     private TabLayout tabs2 =null;
     private List<Object> newsItems=null;
-
-    private MultiLevelListView multiLevelListView;
 
     public void views(List<Object> list) {
         LinearLayout layout = (LinearLayout)findViewById(R.id.layout);
@@ -175,7 +174,9 @@ public class NewsListAppActivity extends AppCompatActivity implements SwipeRefre
             public void onClick(View v) {
 //                Intent intent = new Intent(appActivity, AuthenticationAppActivity.class);
 //                startActivity(intent);
-                Toast.makeText(appActivity, "Скоро будет", Toast.LENGTH_SHORT).show();
+                Toast.makeText(appActivity, "Авторизацию к сожалению не получится сделать, потому что тип авторизации у них изменился(", Toast.LENGTH_SHORT).show();
+//                AuthorizationDialog dialog = new AuthorizationDialog(NewsListAppActivity.this);
+//                dialog.show();
             }
         });
         ((ImageView) mDrawer.findViewById(R.id.image_setting)).setOnClickListener(new View.OnClickListener() {
@@ -208,9 +209,7 @@ public class NewsListAppActivity extends AppCompatActivity implements SwipeRefre
                     finish();*/
 
         mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.activity_main_swipe_refresh_layout);
-
         mSwipeRefreshLayout.setOnRefreshListener(this);
-
         confMenu();
     }
 
@@ -308,7 +307,7 @@ public class NewsListAppActivity extends AppCompatActivity implements SwipeRefre
 
 
     private void confMenu() {
-        multiLevelListView = (MultiLevelListView) findViewById(R.id.multiLevelMenu);
+        MultiLevelListView multiLevelListView = (MultiLevelListView) findViewById(R.id.multiLevelMenu);
 
         // custom ListAdapter
         ListAdapter listAdapter = new ListAdapter();

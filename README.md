@@ -32,17 +32,7 @@
 
 
 ## Библиотеки
-1. [sugar](https://github.com/chennaione/sugar) бд 
-2. Butterknife ()
-3. Toothpick
-4. Moxy
-5. Dagger
-6. RXJava
+1. [sugar](https://github.com/chennaione/sugar) бд (К сожалению не понадобилось( )
+2. Butterknife 
 
 ## Архитектура MVP
-
-## Сделать
-
- [] Picture in picture
- [] Сменить архитектуру на MVP
- [] 

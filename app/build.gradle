@@ -26,13 +26,13 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-
-    implementation 'com.google.android.exoplayer:exoplayer:2.7.3'
     //noinspection GradleCompatible
     implementation 'com.android.support:appcompat-v7:26.0.0-alpha1'
     implementation 'me.grantland:autofittextview:0.2.1'
     implementation 'com.squareup.okhttp3:okhttp:3.8.1'
     implementation 'com.google.code.gson:gson:2.8.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.1.0'
+    implementation 'com.squareup.retrofit2:retrofit:2.1.0'
     implementation 'com.github.traex.rippleeffect:library:1.3'
     implementation 'com.android.support:design:26.0.0-alpha1'
     implementation "com.android.support:cardview-v7:26.0.0-alpha1"
@@ -74,6 +74,7 @@ dependencies {
 
 
     implementation 'com.github.pedrovgs:draggablepanel:1.9'
+    implementation 'com.squareup.retrofit2:retrofit:2.3.0'
 
     implementation 'com.thoughtbot:expandablerecyclerview:1.0'
     implementation 'com.github.bumptech.glide:glide:3.7.0'
@@ -89,15 +90,13 @@ dependencies {
 //dependencies
     implementation 'com.flaviofaria:kenburnsview:1.0.7'
     implementation 'com.jpardogo.materialtabstrip:library:1.1.0'
-    implementation 'com.github.bumptech.glide:glide:4.0.0'
+    implementation 'com.github.bumptech.glide:glide:4.0.0'// ВЕРСИЮ НЕ МЕНЯТЬ 4.0.0
 
 //    implementation 'cn.hugeterry.coordinatortablayout:coordinatortablayout:1.2.2'
+
 //    implementation 'com.github.wseemann:FFmpegMediaPlayer:1.0.4'
 
-    implementation 'com.google.android.exoplayer:exoplayer:r2.4.0'
+    implementation 'com.google.android.exoplayer:exoplayer:2.7.3'
     implementation 'com.google.android.exoplayer:extension-okhttp:r2.4.0'
-
     implementation 'com.github.satyan:sugar:1.5'
-
-    implementation 'com.afollestad.material-dialogs:input:3.2.1'
 }

@@ -32,7 +32,7 @@
         android:inputType="textPassword" />
 
     <Button
-        android:id="@+id/login"
+        android:id="@+id/aut_authorization"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="ВОЙТИ" />
